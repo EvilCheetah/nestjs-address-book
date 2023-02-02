@@ -1,1 +1,1 @@
-export class CreateCountryDto {}
+export class CreateCountryDTO {}
