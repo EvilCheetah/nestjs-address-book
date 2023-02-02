@@ -16,6 +16,15 @@
     "noImplicitAny": false,
     "strictBindCallApply": false,
     "forceConsistentCasingInFileNames": false,
-    "noFallthroughCasesInSwitch": false
+    "noFallthroughCasesInSwitch": false,
+
+    "paths": {
+        "@/config":       ["src/common/config/index"],
+        "@/validation":   ["src/common/validation/index"],
+        
+        "@/config/*":     ["src/common/config/*"],
+        "@/common/*":     ["src/common/*"],
+        "@/validation/*": ["src/common/validation/*"],
+    }
   }
 }
