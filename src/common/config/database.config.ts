@@ -1,6 +1,8 @@
 import { MikroOrmModuleAsyncOptions } from "@mikro-orm/nestjs";
 import { ConfigModule, ConfigService } from "@nestjs/config";
 
+import { Country } from "src/country/entities/country.entity";
+
 
 export function get_database_config(): MikroOrmModuleAsyncOptions
 {
@@ -14,7 +16,7 @@ export function get_database_config(): MikroOrmModuleAsyncOptions
             password: config.get('DB_PASSWORD'),
             dbName:   config.get('DB_DATABASE'),
             entities: [
-
+                Country
             ]
         }),
         imports: [ ConfigModule ],
