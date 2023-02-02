@@ -1,0 +1,11 @@
+services:
+  postgres-db:
+    image: postgres:alpine
+    container_name: postgres-db
+    restart: always
+    ports:
+      - ${DB_PORT}:5432
+    environment: 
+      POSTGRES_USER: ${DB_USERNAME}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_DB: ${DB_DATABASE}
