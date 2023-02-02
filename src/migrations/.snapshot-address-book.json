@@ -1,0 +1,92 @@
+{
+  "namespaces": [
+    "public"
+  ],
+  "name": "public",
+  "tables": [
+    {
+      "columns": {
+        "country_id": {
+          "name": "country_id",
+          "type": "serial",
+          "unsigned": true,
+          "autoincrement": true,
+          "primary": true,
+          "nullable": false,
+          "mappedType": "integer"
+        },
+        "country_name": {
+          "name": "country_name",
+          "type": "varchar(255)",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "mappedType": "string"
+        },
+        "two_alpha_abbr": {
+          "name": "two_alpha_abbr",
+          "type": "varchar(2)",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": true,
+          "length": 2,
+          "mappedType": "string"
+        },
+        "three_alpha_abbr": {
+          "name": "three_alpha_abbr",
+          "type": "varchar(3)",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": true,
+          "length": 3,
+          "mappedType": "string"
+        }
+      },
+      "name": "country",
+      "schema": "public",
+      "indexes": [
+        {
+          "columnNames": [
+            "country_name"
+          ],
+          "composite": false,
+          "keyName": "country_country_name_unique",
+          "primary": false,
+          "unique": true
+        },
+        {
+          "columnNames": [
+            "two_alpha_abbr"
+          ],
+          "composite": false,
+          "keyName": "country_two_alpha_abbr_unique",
+          "primary": false,
+          "unique": true
+        },
+        {
+          "columnNames": [
+            "three_alpha_abbr"
+          ],
+          "composite": false,
+          "keyName": "country_three_alpha_abbr_unique",
+          "primary": false,
+          "unique": true
+        },
+        {
+          "keyName": "country_pkey",
+          "columnNames": [
+            "country_id"
+          ],
+          "composite": false,
+          "primary": true,
+          "unique": true
+        }
+      ],
+      "checks": [],
+      "foreignKeys": {}
+    }
+  ]
+}
