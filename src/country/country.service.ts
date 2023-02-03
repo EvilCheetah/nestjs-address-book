@@ -16,7 +16,7 @@ export class CountryService
         private readonly countryRepository: EntityRepository<Country>
     ) {}
 
-    async create(createCountryDTO: CreateCountryDTO)
+    async create(createCountryDTO: CreateCountryDTO): Promise<Country>
     {
         const country = this.countryRepository.create(createCountryDTO);
 
@@ -25,12 +25,12 @@ export class CountryService
         return country;
     }
 
-    find_all()
+    find_all(): Promise<Country[]>
     {
         return this.countryRepository.findAll();
     }
 
-    async find_one(country_id: number)
+    async find_one(country_id: number): Promise<Country>
     {
         const country = await this.countryRepository.findOne({ country_id });
 
@@ -40,7 +40,7 @@ export class CountryService
         return country
     }
 
-    async update(country_id: number, updateCountryDTO: UpdateCountryDTO)
+    async update(country_id: number, updateCountryDTO: UpdateCountryDTO): Promise<Country>
     {
         const country = await this.find_one(country_id);
 
@@ -50,12 +50,10 @@ export class CountryService
         return country;
     }
 
-    async remove(country_id: number)
+    async remove(country_id: number): Promise<void>
     {
         const country = await this.find_one(country_id);
 
         await this.countryRepository.removeAndFlush(country);
-
-        return country;
     }
 }

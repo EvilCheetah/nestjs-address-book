@@ -1,10 +1,11 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete, ParseIntPipe } from '@nestjs/common';
+import { Controller, Get, Post, Body, Patch, Param, Delete, ParseIntPipe, HttpStatus, HttpCode } from '@nestjs/common';
 import { CountryService } from './country.service';
 import { CreateCountryDTO } from './dto/create-country.dto';
 import { UpdateCountryDTO } from './dto/update-country.dto';
+import { Country } from './entities/country.entity';
 
 
-@Controller('country')
+@Controller('countries')
 export class CountryController
 {
     constructor(
@@ -16,14 +17,14 @@ export class CountryController
     create(
         @Body()
         createCountryDTO: CreateCountryDTO
-    )
+    ): Promise<Country>
     {
         return this.countryService.create(createCountryDTO);
     }
 
 
     @Get()
-    find_all()
+    find_all(): Promise<Country[]>
     {
         return this.countryService.find_all();
     }
@@ -33,7 +34,7 @@ export class CountryController
     find_one(
         @Param('id', ParseIntPipe)
         country_id: number
-    )
+    ): Promise<Country>
     {
         return this.countryService.find_one(country_id);
     }
@@ -46,17 +47,18 @@ export class CountryController
         
         @Body()
         updateCountryDTO: UpdateCountryDTO
-    )
+    ): Promise<Country>
     {
         return this.countryService.update(country_id, updateCountryDTO);
     }
 
 
+    @HttpCode(HttpStatus.NO_CONTENT)
     @Delete(':id')
     remove(
         @Param('id', ParseIntPipe)
         country_id: number
-    )
+    ): Promise<void>
     {
         return this.countryService.remove(country_id);
     }
